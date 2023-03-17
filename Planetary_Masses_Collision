@@ -1,0 +1,47 @@
+%
+%Planetary Objects doing Planetary Things
+%
+
+%%%%%% Initialization part %%%%%%
+clear all;
+
+%%Making Masses and Positions%%
+Num_Mss=2;
+Plnt_Mss=[];
+Plnt_X=[];
+Plnt_Y=[];
+
+%%Planetary Velocities%%
+Plnt_V=[];
+
+for ii=1:Num_Mss;
+   Plnt_Mss(ii)=100*rand(1);
+   Plnt_X(ii)=25*rand(1);
+   Plnt_Y(ii)=25*rand(1);
+   Plnt_V(ii)=rand(1)*2*pi;
+end
+
+%%Time%%
+T_Init=0;
+dt=0.01;
+time(1)=T_Init;  %%Setup Time%%
+
+
+%%Euler-Cromer Method%%
+step=1;
+vx=0;
+vy=0;
+x=0;
+y=0;
+fx=0;
+fy=0;
+
+vx(step+1)= vx(step) + fx*dt;
+vy(step+1)= vy(step) + fy*dt;
+
+x(step+1)= x(step) + vx(step+1)*dt;
+y(step+1)= y(step) + vy(step+1)*dt;
+
+time(step+1)= time(step) + dt;
+
+step=step+1;
